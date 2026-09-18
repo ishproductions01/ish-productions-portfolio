@@ -1345,31 +1345,49 @@
       background:linear-gradient(135deg,transparent 0 48%,rgba(206,224,234,.035) 49% 51%,transparent 52% 100%);
     }
 </style>
-<style id="production-media-controls">
-#expertise .reel-audio-btn{position:absolute;z-index:6;top:12px;right:12px;min-width:54px;height:30px;padding:0 10px;border:1px solid rgba(240,247,247,.26);border-radius:999px;background:rgba(3,11,17,.58);color:#eef4f3;font-size:7.5px;font-weight:700;letter-spacing:.10em;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);touch-action:manipulation}
-#expertise .reel-audio-btn:hover,#expertise .reel-audio-btn:focus-visible{background:rgba(238,244,243,.92);color:#041018;outline:none}
-#expertise .reel-card.is-audible .reel-audio-btn{background:rgba(238,244,243,.92);color:#041018}
-@media(max-width:699px){#expertise .reel-audio-btn{top:10px;right:10px;height:28px;min-width:50px;font-size:7px}}
-</style>
 <style id="video-framing-fullscreen-fix">
+/* Reel media framing and controls. The video element is the only reel preview layer. */
 #expertise .reel-card .visual{background:#06131d!important;overflow:hidden}
-#expertise .filtered-work .media-video,#expertise .media-video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;background:#06131d!important;transform:translateZ(0);-webkit-transform:translateZ(0)}
-#expertise .media-video.video-landscape,#expertise .media-video.video-portrait,#expertise .media-video.video-square{object-fit:contain!important}
-#expertise .reel-card .visual::before{display:none!important}
+#expertise .media-video{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:#06131d!important;
+  z-index:2!important;
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+  cursor:pointer;
+}
 #expertise .reel-controls{position:absolute;z-index:8;right:11px;bottom:11px;display:flex;align-items:center;gap:7px;pointer-events:auto}
 #expertise .reel-control{width:42px;height:42px;min-width:42px;padding:0;border:1px solid rgba(238,244,243,.23);border-radius:50%;display:grid;place-items:center;background:rgba(3,11,17,.64);color:#f0f4f3;cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);touch-action:manipulation;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
 #expertise .reel-control:hover,#expertise .reel-control:focus-visible{background:rgba(238,244,243,.92);color:#041018;border-color:rgba(238,244,243,.92);outline:none;transform:translateY(-1px)}
 #expertise .reel-control svg{width:18px;height:18px;display:block;pointer-events:none}
-#expertise .reel-card .pause-glyph{display:none}#expertise .reel-card.is-playing .play-glyph{display:none}#expertise .reel-card.is-playing .pause-glyph{display:block}
-#expertise .reel-card .mute-x{display:none}#expertise .reel-card.is-muted .sound-waves{display:none}#expertise .reel-card.is-muted .mute-x{display:block}
+#expertise .reel-card .pause-glyph{display:none}
+#expertise .reel-card.is-playing .play-glyph{display:none}
+#expertise .reel-card.is-playing .pause-glyph{display:block}
+#expertise .reel-card .mute-x{display:none}
+#expertise .reel-card.is-muted .sound-waves{display:none}
+#expertise .reel-card.is-muted .mute-x{display:block}
 #expertise .reel-audio-btn{position:static!important;top:auto!important;right:auto!important;min-width:42px!important;width:42px!important;height:42px!important;padding:0!important;font-size:0!important}
+#expertise .reel-card.is-audible .reel-audio-btn{background:rgba(238,244,243,.92);color:#041018}
+#expertise .reel-card .visual::after,#expertise .reel-card .visual-label,#expertise .reel-card .visual-bottom{pointer-events:none}
 #expertise .carousel-shell{position:relative;width:100%;min-width:0}
 #expertise .carousel-shell .carousel{position:relative}
 #expertise .carousel-nav{position:absolute!important;top:50%!important;transform:translateY(-50%)!important;z-index:20!important;width:48px!important;height:48px!important;display:grid!important;place-items:center!important;background:rgba(3,11,17,.68)!important;border:1px solid rgba(238,244,243,.22)!important;color:#eef3f2!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);touch-action:manipulation}
-#expertise .carousel-nav.prev{left:12px!important}#expertise .carousel-nav.next{right:12px!important}
+#expertise .carousel-nav.prev{left:12px!important}
+#expertise .carousel-nav.next{right:12px!important}
 #expertise .carousel-nav:hover:not(:disabled),#expertise .carousel-nav:focus-visible:not(:disabled){background:rgba(238,244,243,.92)!important;color:#041018!important;border-color:rgba(238,244,243,.92)!important;transform:translateY(-50%)!important;outline:none}
 #expertise .carousel-nav:disabled{opacity:.25!important;cursor:default!important;pointer-events:none!important}
-@media(max-width:699px){#expertise .reel-controls{right:9px;bottom:9px;gap:6px}#expertise .reel-control,#expertise .reel-audio-btn{width:42px!important;height:42px!important;min-width:42px!important}#expertise .carousel-nav{width:42px!important;height:42px!important}#expertise .carousel-nav.prev{left:8px!important}#expertise .carousel-nav.next{right:8px!important}}
+@media(max-width:699px){
+  #expertise .reel-controls{right:9px;bottom:9px;gap:6px}
+  #expertise .reel-control,#expertise .reel-audio-btn{width:42px!important;height:42px!important;min-width:42px!important}
+  #expertise .carousel-nav{width:42px!important;height:42px!important}
+  #expertise .carousel-nav.prev{left:8px!important}
+  #expertise .carousel-nav.next{right:8px!important}
+}
 </style>
 
 </head>
@@ -1469,14 +1487,14 @@
 
     /* ==========================================================
        PHASE 4 — PRODUCTION MEDIA INTEGRATION
-       Responsive stills + poster-first lazy reels.
+       Responsive stills + native video reel previews.
        ========================================================== */
     .filtered-work .visual.has-media{background:#06131d!important}
     .filtered-work .visual.has-media::before{content:none!important}
     .filtered-work picture{position:absolute;inset:0;z-index:0;display:block}
     .filtered-work .media-bg-img{z-index:0;transform:scale(1.001);will-change:transform}
     .filtered-work .work-card:hover .media-bg-img{transform:scale(1.025)}
-    .filtered-work .media-video{z-index:0;cursor:pointer}
+    .filtered-work .media-video{cursor:pointer}
     .filtered-work .visual::after{pointer-events:none}
     .filtered-work .visual-label,.filtered-work .visual-bottom{pointer-events:none}
     .filtered-work .reel-card.is-playing .visual-label{opacity:.74}
@@ -1549,9 +1567,6 @@
 /* PHASE 5.2 — RELIABLE CAROUSEL + MANUAL REEL CONTROL */
 #expertise .reel-card{cursor:pointer;outline:none}
 #expertise .reel-card:focus-visible .visual{box-shadow:0 0 0 2px rgba(109,214,190,.85),0 0 0 5px rgba(109,214,190,.14)}
-#expertise .reel-card .visual::before{content:"PLAY";position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;min-width:54px;height:34px;padding:0 12px;border:1px solid rgba(240,247,247,.30);border-radius:999px;background:rgba(3,11,17,.54);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:8px;letter-spacing:.11em;color:#f1f5f4;opacity:.92;transition:opacity .2s ease,transform .2s ease;pointer-events:none}
-#expertise .reel-card.is-playing .visual::before{content:"PAUSE";opacity:.18;transform:translate(-50%,-50%) scale(.94)}
-#expertise .reel-card:hover .visual::before{opacity:1;transform:translate(-50%,-50%) scale(1.03)}
 #expertise .carousel-btn{touch-action:manipulation;position:relative;z-index:8}
 
 </style>
@@ -1960,7 +1975,7 @@
 <div aria-label="Filtered reel work" class="carousel" id="reel-filter-carousel">
 <article class="reel-card video-source-landscape" data-category="Architecture" data-group="spaces" data-sector-card="spaces" data-subcategory="architecture">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Architecture portfolio reel" class="media-video video-landscape" data-poster="assets/posters/1.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/1.mp4" loop="" muted="" playsinline="" poster="assets/posters/1.webp" preload="none" src="assets/videos/1.mp4" webkit-playsinline=""></video>
+<video aria-label="Architecture portfolio reel" class="media-video" src="assets/videos/1.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Architecture</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -1970,7 +1985,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Architecture" data-group="spaces" data-sector-card="spaces" data-subcategory="architecture">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Architecture portfolio reel" class="media-video video-landscape" data-poster="assets/posters/2.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/2.mp4" loop="" muted="" playsinline="" poster="assets/posters/2.webp" preload="none" src="assets/videos/2.mp4" webkit-playsinline=""></video>
+<video aria-label="Architecture portfolio reel" class="media-video" src="assets/videos/2.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Architecture</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -1980,7 +1995,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Architecture" data-group="spaces" data-sector-card="spaces" data-subcategory="architecture">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Architecture portfolio reel" class="media-video video-landscape" data-poster="assets/posters/3.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/3.mp4" loop="" muted="" playsinline="" poster="assets/posters/3.webp" preload="none" src="assets/videos/3.mp4" webkit-playsinline=""></video>
+<video aria-label="Architecture portfolio reel" class="media-video" src="assets/videos/3.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Architecture</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -1990,7 +2005,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Architecture" data-group="spaces" data-sector-card="spaces" data-subcategory="architecture">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Architecture portfolio reel" class="media-video video-landscape" data-poster="assets/posters/4.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/4.mp4" loop="" muted="" playsinline="" poster="assets/posters/4.webp" preload="none" src="assets/videos/4.mp4" webkit-playsinline=""></video>
+<video aria-label="Architecture portfolio reel" class="media-video" src="assets/videos/4.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Architecture</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2000,7 +2015,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Interiors" data-group="spaces" data-sector-card="spaces" data-subcategory="interiors">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Interiors portfolio reel" class="media-video video-landscape" data-poster="assets/posters/5.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/5.mp4" loop="" muted="" playsinline="" poster="assets/posters/5.webp" preload="none" src="assets/videos/5.mp4" webkit-playsinline=""></video>
+<video aria-label="Interiors portfolio reel" class="media-video" src="assets/videos/5.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Interiors</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2010,7 +2025,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Interiors" data-group="spaces" data-sector-card="spaces" data-subcategory="interiors">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Interiors portfolio reel" class="media-video video-landscape" data-poster="assets/posters/6.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/6.mp4" loop="" muted="" playsinline="" poster="assets/posters/6.webp" preload="none" src="assets/videos/6.mp4" webkit-playsinline=""></video>
+<video aria-label="Interiors portfolio reel" class="media-video" src="assets/videos/6.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Interiors</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2020,7 +2035,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Interiors" data-group="spaces" data-sector-card="spaces" data-subcategory="interiors">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Interiors portfolio reel" class="media-video video-landscape" data-poster="assets/posters/7.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/7.mp4" loop="" muted="" playsinline="" poster="assets/posters/7.webp" preload="none" src="assets/videos/7.mp4" webkit-playsinline=""></video>
+<video aria-label="Interiors portfolio reel" class="media-video" src="assets/videos/7.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Interiors</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2030,7 +2045,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Interiors" data-group="spaces" data-sector-card="spaces" data-subcategory="interiors">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Interiors portfolio reel" class="media-video video-landscape" data-poster="assets/posters/8.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/8.mp4" loop="" muted="" playsinline="" poster="assets/posters/8.webp" preload="none" src="assets/videos/8.mp4" webkit-playsinline=""></video>
+<video aria-label="Interiors portfolio reel" class="media-video" src="assets/videos/8.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Interiors</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2040,7 +2055,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Furniture" data-group="spaces" data-sector-card="spaces" data-subcategory="furniture">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Furniture portfolio reel" class="media-video video-landscape" data-poster="assets/posters/9.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/9.mp4" loop="" muted="" playsinline="" poster="assets/posters/9.webp" preload="none" src="assets/videos/9.mp4" webkit-playsinline=""></video>
+<video aria-label="Furniture portfolio reel" class="media-video" src="assets/videos/9.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Furniture</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2050,7 +2065,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Furniture" data-group="spaces" data-sector-card="spaces" data-subcategory="furniture">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Furniture portfolio reel" class="media-video video-landscape" data-poster="assets/posters/10.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/10.mp4" loop="" muted="" playsinline="" poster="assets/posters/10.webp" preload="none" src="assets/videos/10.mp4" webkit-playsinline=""></video>
+<video aria-label="Furniture portfolio reel" class="media-video" src="assets/videos/10.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Furniture</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2060,7 +2075,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Furniture" data-group="spaces" data-sector-card="spaces" data-subcategory="furniture">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Furniture portfolio reel" class="media-video video-landscape" data-poster="assets/posters/11.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/11.mp4" loop="" muted="" playsinline="" poster="assets/posters/11.webp" preload="none" src="assets/videos/11.mp4" webkit-playsinline=""></video>
+<video aria-label="Furniture portfolio reel" class="media-video" src="assets/videos/11.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Furniture</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2070,7 +2085,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Hotels &amp; Resorts" data-group="hospitality" data-sector-card="hospitality" data-subcategory="hotels">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Hotels &amp; Resorts portfolio reel" class="media-video video-landscape" data-poster="assets/posters/12.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/12.mp4" loop="" muted="" playsinline="" poster="assets/posters/12.webp" preload="none" src="assets/videos/12.mp4" webkit-playsinline=""></video>
+<video aria-label="Hotels &amp; Resorts portfolio reel" class="media-video" src="assets/videos/12.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Hotels &amp; Resorts</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2080,7 +2095,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Hotels &amp; Resorts" data-group="hospitality" data-sector-card="hospitality" data-subcategory="hotels">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Hotels &amp; Resorts portfolio reel" class="media-video video-landscape" data-poster="assets/posters/13.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/13.mp4" loop="" muted="" playsinline="" poster="assets/posters/13.webp" preload="none" src="assets/videos/13.mp4" webkit-playsinline=""></video>
+<video aria-label="Hotels &amp; Resorts portfolio reel" class="media-video" src="assets/videos/13.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Hotels &amp; Resorts</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2090,7 +2105,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Hotels &amp; Resorts" data-group="hospitality" data-sector-card="hospitality" data-subcategory="hotels">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Hotels &amp; Resorts portfolio reel" class="media-video video-landscape" data-poster="assets/posters/14.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/14.mp4" loop="" muted="" playsinline="" poster="assets/posters/14.webp" preload="none" src="assets/videos/14.mp4" webkit-playsinline=""></video>
+<video aria-label="Hotels &amp; Resorts portfolio reel" class="media-video" src="assets/videos/14.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Hotels &amp; Resorts</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2100,7 +2115,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Hotels &amp; Resorts" data-group="hospitality" data-sector-card="hospitality" data-subcategory="hotels">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Hotels &amp; Resorts portfolio reel" class="media-video video-landscape" data-poster="assets/posters/15.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/15.mp4" loop="" muted="" playsinline="" poster="assets/posters/15.webp" preload="none" src="assets/videos/15.mp4" webkit-playsinline=""></video>
+<video aria-label="Hotels &amp; Resorts portfolio reel" class="media-video" src="assets/videos/15.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Hotels &amp; Resorts</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2110,7 +2125,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Restaurants &amp; Cafes" data-group="hospitality" data-sector-card="hospitality" data-subcategory="restaurant">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Restaurants &amp; Cafes portfolio reel" class="media-video video-landscape" data-poster="assets/posters/16.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/16.mp4" loop="" muted="" playsinline="" poster="assets/posters/16.webp" preload="none" src="assets/videos/16.mp4" webkit-playsinline=""></video>
+<video aria-label="Restaurants &amp; Cafes portfolio reel" class="media-video" src="assets/videos/16.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Restaurants &amp; Cafes</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2120,7 +2135,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Restaurants &amp; Cafes" data-group="hospitality" data-sector-card="hospitality" data-subcategory="restaurant">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Restaurants &amp; Cafes portfolio reel" class="media-video video-landscape" data-poster="assets/posters/17.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/17.mp4" loop="" muted="" playsinline="" poster="assets/posters/17.webp" preload="none" src="assets/videos/17.mp4" webkit-playsinline=""></video>
+<video aria-label="Restaurants &amp; Cafes portfolio reel" class="media-video" src="assets/videos/17.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Restaurants &amp; Cafes</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2130,7 +2145,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Events" data-group="hospitality" data-sector-card="hospitality" data-subcategory="events">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Events portfolio reel" class="media-video video-landscape" data-poster="assets/posters/18.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/18.mp4" loop="" muted="" playsinline="" poster="assets/posters/18.webp" preload="none" src="assets/videos/18.mp4" webkit-playsinline=""></video>
+<video aria-label="Events portfolio reel" class="media-video" src="assets/videos/18.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Events</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2140,7 +2155,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Events" data-group="hospitality" data-sector-card="hospitality" data-subcategory="events">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Events portfolio reel" class="media-video video-landscape" data-poster="assets/posters/19.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/19.mp4" loop="" muted="" playsinline="" poster="assets/posters/19.webp" preload="none" src="assets/videos/19.mp4" webkit-playsinline=""></video>
+<video aria-label="Events portfolio reel" class="media-video" src="assets/videos/19.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Events</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2150,7 +2165,7 @@
 </article>
 <article class="reel-card video-source-square" data-category="Fashion" data-group="brands" data-sector-card="brands" data-subcategory="fashion">
 <div class="visual has-media" data-source-aspect="square" data-source-height="1080" data-source-width="1080">
-<video aria-label="Fashion portfolio reel" class="media-video video-square" data-poster="assets/posters/20.webp" data-source-aspect="square" data-source-height="1080" data-source-width="1080" data-src="assets/videos/20.mp4" loop="" muted="" playsinline="" poster="assets/posters/20.webp" preload="none" src="assets/videos/20.mp4" webkit-playsinline=""></video>
+<video aria-label="Fashion portfolio reel" class="media-video" src="assets/videos/20.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Fashion</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2160,7 +2175,7 @@
 </article>
 <article class="reel-card video-source-square" data-category="Fashion" data-group="brands" data-sector-card="brands" data-subcategory="fashion">
 <div class="visual has-media" data-source-aspect="square" data-source-height="1080" data-source-width="1080">
-<video aria-label="Fashion portfolio reel" class="media-video video-square" data-poster="assets/posters/21.webp" data-source-aspect="square" data-source-height="1080" data-source-width="1080" data-src="assets/videos/21.mp4" loop="" muted="" playsinline="" poster="assets/posters/21.webp" preload="none" src="assets/videos/21.mp4" webkit-playsinline=""></video>
+<video aria-label="Fashion portfolio reel" class="media-video" src="assets/videos/21.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Fashion</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2170,7 +2185,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Fashion" data-group="brands" data-sector-card="brands" data-subcategory="fashion">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Fashion portfolio reel" class="media-video video-landscape" data-poster="assets/posters/22.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/22.mp4" loop="" muted="" playsinline="" poster="assets/posters/22.webp" preload="none" src="assets/videos/22.mp4" webkit-playsinline=""></video>
+<video aria-label="Fashion portfolio reel" class="media-video" src="assets/videos/22.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Fashion</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2180,7 +2195,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Fashion" data-group="brands" data-sector-card="brands" data-subcategory="fashion">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Fashion portfolio reel" class="media-video video-landscape" data-poster="assets/posters/23.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/23.mp4" loop="" muted="" playsinline="" poster="assets/posters/23.webp" preload="none" src="assets/videos/23.mp4" webkit-playsinline=""></video>
+<video aria-label="Fashion portfolio reel" class="media-video" src="assets/videos/23.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Fashion</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2190,7 +2205,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Automotive" data-group="brands" data-sector-card="brands" data-subcategory="automotive">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Automotive portfolio reel" class="media-video video-landscape" data-poster="assets/posters/24.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/24.mp4" loop="" muted="" playsinline="" poster="assets/posters/24.webp" preload="none" src="assets/videos/24.mp4" webkit-playsinline=""></video>
+<video aria-label="Automotive portfolio reel" class="media-video" src="assets/videos/24.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Automotive</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2200,7 +2215,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Automotive" data-group="brands" data-sector-card="brands" data-subcategory="automotive">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1078" data-source-width="1920">
-<video aria-label="Automotive portfolio reel" class="media-video video-landscape" data-poster="assets/posters/25.webp" data-source-aspect="landscape" data-source-height="1078" data-source-width="1920" data-src="assets/videos/25.mp4" loop="" muted="" playsinline="" poster="assets/posters/25.webp" preload="none" src="assets/videos/25.mp4" webkit-playsinline=""></video>
+<video aria-label="Automotive portfolio reel" class="media-video" src="assets/videos/25.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Automotive</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2210,7 +2225,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Automotive" data-group="brands" data-sector-card="brands" data-subcategory="automotive">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Automotive portfolio reel" class="media-video video-landscape" data-poster="assets/posters/26.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/26.mp4" loop="" muted="" playsinline="" poster="assets/posters/26.webp" preload="none" src="assets/videos/26.mp4" webkit-playsinline=""></video>
+<video aria-label="Automotive portfolio reel" class="media-video" src="assets/videos/26.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Automotive</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2220,7 +2235,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Automotive" data-group="brands" data-sector-card="brands" data-subcategory="automotive">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Automotive portfolio reel" class="media-video video-landscape" data-poster="assets/posters/27.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/27.mp4" loop="" muted="" playsinline="" poster="assets/posters/27.webp" preload="none" src="assets/videos/27.mp4" webkit-playsinline=""></video>
+<video aria-label="Automotive portfolio reel" class="media-video" src="assets/videos/27.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Automotive</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2230,7 +2245,7 @@
 </article>
 <article class="reel-card video-source-square" data-category="Travel" data-group="hospitality" data-sector-card="hospitality" data-subcategory="travel">
 <div class="visual has-media" data-source-aspect="square" data-source-height="1080" data-source-width="1080">
-<video aria-label="Travel portfolio reel" class="media-video video-square" data-poster="assets/posters/28.webp" data-source-aspect="square" data-source-height="1080" data-source-width="1080" data-src="assets/videos/28.mp4" loop="" muted="" playsinline="" poster="assets/posters/28.webp" preload="none" src="assets/videos/28.mp4" webkit-playsinline=""></video>
+<video aria-label="Travel portfolio reel" class="media-video" src="assets/videos/28.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Travel</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2240,7 +2255,7 @@
 </article>
 <article class="reel-card video-source-square" data-category="Travel" data-group="hospitality" data-sector-card="hospitality" data-subcategory="travel">
 <div class="visual has-media" data-source-aspect="square" data-source-height="1080" data-source-width="1080">
-<video aria-label="Travel portfolio reel" class="media-video video-square" data-poster="assets/posters/29.webp" data-source-aspect="square" data-source-height="1080" data-source-width="1080" data-src="assets/videos/29.mp4" loop="" muted="" playsinline="" poster="assets/posters/29.webp" preload="none" src="assets/videos/29.mp4" webkit-playsinline=""></video>
+<video aria-label="Travel portfolio reel" class="media-video" src="assets/videos/29.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Travel</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2250,7 +2265,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Corporate" data-group="brands" data-sector-card="brands" data-subcategory="corporate">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Corporate portfolio reel" class="media-video video-landscape" data-poster="assets/posters/30.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/30.mp4" loop="" muted="" playsinline="" poster="assets/posters/30.webp" preload="none" src="assets/videos/30.mp4" webkit-playsinline=""></video>
+<video aria-label="Corporate portfolio reel" class="media-video" src="assets/videos/30.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Corporate</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2260,7 +2275,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Corporate" data-group="brands" data-sector-card="brands" data-subcategory="corporate">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Corporate portfolio reel" class="media-video video-landscape" data-poster="assets/posters/31.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/31.mp4" loop="" muted="" playsinline="" poster="assets/posters/31.webp" preload="none" src="assets/videos/31.mp4" webkit-playsinline=""></video>
+<video aria-label="Corporate portfolio reel" class="media-video" src="assets/videos/31.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Corporate</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2270,7 +2285,7 @@
 </article>
 <article class="reel-card video-source-landscape" data-category="Corporate" data-group="brands" data-sector-card="brands" data-subcategory="corporate">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Corporate portfolio reel" class="media-video video-landscape" data-poster="assets/posters/32.webp" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920" data-src="assets/videos/32.mp4" loop="" muted="" playsinline="" poster="assets/posters/32.webp" preload="none" src="assets/videos/32.mp4" webkit-playsinline=""></video>
+<video aria-label="Corporate portfolio reel" class="media-video" src="assets/videos/32.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
 <span class="visual-label">Corporate</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
@@ -2311,7 +2326,7 @@
 </section>
 <section class="contact" id="contact">
 <div class="shell contact-grid">
-<div class="reveal"><div class="eyebrow">Start something worth remembering</div><h2 class="display">Create.<br><span class="outline">Position.</span><br>Grow.</br></br></h2></div>
+<div class="reveal"><div class="eyebrow">Start something worth remembering</div><h2 class="display">Create.<br><span class="outline">Position.</span><br>Grow.</h2></div>
 <div class="contact-row reveal"><p class="contact-copy">Have a brand, campaign or production in mind? Bring us the ambition. We’ll build the creative system around it.</p><div><a class="big-link" href="mailto:hello@ishproductions01.com"><span>hello@ishproductions01.com</span></a><a class="big-link" href="https://www.instagram.com/ish.productions01/" rel="noopener noreferrer" target="_blank"><span>Instagram</span></a></div></div>
 <footer class="footer"><span>© <span id="year"></span> ISH Productions</span><div class="footer-links"><a href="#top">Back to top</a><a href="#expertise">Selected work</a><a href="#about">About</a></div></footer>
 </div>
@@ -2594,7 +2609,7 @@
         var currentGroup='spaces',down=false,startX=0,startScroll=0,moved=false,suppressClick=false;
         function allCards(){return [].slice.call(track.querySelectorAll(options.cardSelector));}
         function visibleCards(){return allCards().filter(function(card){return !card.hidden;});}
-        function ensureVisibleMedia(){visibleCards().forEach(function(card,i){var img=card.querySelector('.media-bg-img');if(img&&i<4){img.loading='eager';var src=img.getAttribute('src');if(src&&!img.complete){img.setAttribute('src',src);}}var video=card.querySelector('.media-video');if(video&&i<4){var poster=video.getAttribute('data-poster')||video.getAttribute('poster');if(poster&&!video.getAttribute('poster'))video.setAttribute('poster',poster);}}); }
+        function ensureVisibleMedia(){visibleCards().forEach(function(card,i){var img=card.querySelector('.media-bg-img');if(img&&i<4){img.loading='eager';var src=img.getAttribute('src');if(src&&!img.complete){img.setAttribute('src',src);}}});}
         function paddingLeft(){var n=parseFloat(getComputedStyle(track).paddingLeft);return isNaN(n)?0:n;}
         function nearestLeadingIndex(cards){if(!cards.length)return 0;var target=track.scrollLeft+paddingLeft(),best=0,bestDist=Infinity;cards.forEach(function(card,i){var d=Math.abs(card.offsetLeft-target);if(d<bestDist){bestDist=d;best=i;}});return best;}
         function scrollCardIntoStart(card,behavior){if(!card)return;var left=Math.max(0,card.offsetLeft-paddingLeft());try{track.scrollTo({left:left,behavior:behavior||'smooth'});}catch(_e){track.scrollLeft=left;}}
@@ -2629,26 +2644,209 @@
         reveals.forEach(function(el){el.classList.remove('reveal-pending');el.classList.add('in');});
       }
 
-      // Reel playback: full-frame contain rendering, poster-first loading, one audible reel, and fullscreen.
-      var reelVideos=[].slice.call(document.querySelectorAll('.media-video')),reelRatios=new Map(),manualReel=null,fullscreenVideo=null;
-      var isiOS=/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream,manualReelGraceUntil=0;
-      function reelCardVisible(video){var card=video&&video.closest('[data-group]');return !!(card&&!card.hidden&&!card.classList.contains('is-filter-hidden'));}
-      function hydrateVideo(video){if(!video||video.getAttribute('src'))return;var src=video.getAttribute('data-src');if(!src)return;video.setAttribute('src',src);video.preload='metadata';try{video.load();}catch(_e){}}
-      function hydratePoster(video){if(!video||video.getAttribute('poster'))return;var poster=video.getAttribute('data-poster');if(poster)video.setAttribute('poster',poster);}
-      function syncReelUi(video){if(!video)return;var card=video.closest('.reel-card');if(!card)return;var playBtn=card.querySelector('.reel-play-toggle'),soundBtn=card.querySelector('.reel-sound-toggle'),audible=!video.muted&&!video.paused;card.classList.toggle('is-playing',!video.paused);card.classList.toggle('is-audible',audible);card.classList.toggle('is-muted',video.muted);if(playBtn)playBtn.setAttribute('aria-label',video.paused?'Play reel':'Pause reel');if(soundBtn)soundBtn.setAttribute('aria-label',video.muted?'Enable sound':'Mute reel');}
-      function pauseReel(video,keepMute){if(!video)return;try{video.pause();if(!keepMute){video.muted=true;video.defaultMuted=true;video.setAttribute('muted','');}}catch(_e){}syncReelUi(video);}
-      function pauseAllReels(except){reelVideos.forEach(function(video){if(video!==except)pauseReel(video);});}
-      function playReel(video,byUser){if(!video||!reelCardVisible(video))return;hydratePoster(video);hydrateVideo(video);if(video.readyState===0){video.preload=byUser?'auto':'metadata';try{video.load();}catch(_loadErr){}}pauseAllReels(video);if(byUser){manualReel=video;manualReelGraceUntil=Date.now()+4000;video.preload='auto';video.muted=false;video.defaultMuted=false;video.removeAttribute('muted');}else{video.muted=true;video.defaultMuted=true;video.setAttribute('muted','');}video.playsInline=true;video.loop=true;video.setAttribute('playsinline','');video.setAttribute('webkit-playsinline','');var p;try{p=video.play();}catch(_e){p=null;}if(p&&p.then){p.then(function(){syncReelUi(video);}).catch(function(){if(byUser){video.muted=true;video.defaultMuted=true;video.setAttribute('muted','');var retry;try{retry=video.play();}catch(_e2){retry=null;}if(retry&&retry.then){retry.then(function(){syncReelUi(video);}).catch(function(){syncReelUi(video);});}else syncReelUi(video);}else{video.muted=true;video.defaultMuted=true;video.setAttribute('muted','');syncReelUi(video);}});}else syncReelUi(video);}
-      function toggleManualReel(video){if(!video)return;if(manualReel===video&&!video.paused){pauseReel(video,true);return;}manualReel=video;manualReelGraceUntil=Date.now()+4000;playReel(video,true);}
-      function requestVideoFullscreen(video){if(!video)return;hydratePoster(video);hydrateVideo(video);pauseAllReels(video);manualReel=video;fullscreenVideo=video;function enter(){try{if(isiOS&&typeof video.webkitEnterFullscreen==='function'){video.webkitEnterFullscreen();return;}if(typeof video.requestFullscreen==='function'){var p=video.requestFullscreen();if(p&&p.catch)p.catch(function(){if(typeof video.webkitEnterFullscreen==='function'){try{video.webkitEnterFullscreen();}catch(_e){}}});return;}if(typeof video.webkitEnterFullscreen==='function')video.webkitEnterFullscreen();}catch(_e){fullscreenVideo=null;}}if(video.readyState>=1)enter();else{video.addEventListener('loadedmetadata',enter,{once:true});try{video.load();}catch(_e){}}}
-      if('IntersectionObserver' in window){var posterObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){hydratePoster(entry.target);posterObserver.unobserve(entry.target);}});},{rootMargin:'900px 0px',threshold:0});reelVideos.forEach(function(video){posterObserver.observe(video);});}else reelVideos.forEach(hydratePoster);
-      var connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection,conserveData=!!(connection&&connection.saveData);
-      if('IntersectionObserver' in window&&!conserveData){var preloadObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){hydrateVideo(entry.target);preloadObserver.unobserve(entry.target);}});},{rootMargin:'260px 0px',threshold:0});reelVideos.forEach(function(video){preloadObserver.observe(video);});}
-      function refreshVisibleReels(){if(fullscreenVideo)return;if(document.hidden){pauseAllReels();return;}if(manualReel){var ratio=reelRatios.get(manualReel)||0;if(reelCardVisible(manualReel)&&(ratio>.12||Date.now()<manualReelGraceUntil))return;pauseReel(manualReel);manualReel=null;manualReelGraceUntil=0;}var best=null,bestRatio=.58;reelVideos.forEach(function(video){if(!reelCardVisible(video))return;var ratio=reelRatios.get(video)||0;if(ratio>bestRatio){bestRatio=ratio;best=video;}});pauseAllReels(best);if(best&&!conserveData)playReel(best,false);}
+      // Reel playback: native video previews, one active reel, and Safari/Chrome fullscreen support.
+      var reelVideos=[].slice.call(document.querySelectorAll('#reel-filter-carousel .media-video'));
+      var reelRatios=new Map(),manualReel=null,fullscreenVideo=null,manualReelGraceUntil=0;
+      var isiOS=(/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1))&&!window.MSStream;
+      var connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+      var conserveData=!!(connection&&connection.saveData);
+
+      function reelCardVisible(video){
+        var card=video&&video.closest('.reel-card');
+        return !!(card&&!card.hidden&&!card.classList.contains('is-filter-hidden'));
+      }
+      function primeReelPreview(video){
+        if(!video||video.readyState<1||!video.paused||video.currentTime>0)return;
+        try{video.currentTime=0.001;}catch(_e){}
+      }
+      function syncReelUi(video){
+        if(!video)return;
+        var card=video.closest('.reel-card');if(!card)return;
+        var playBtn=card.querySelector('.reel-play-toggle');
+        var soundBtn=card.querySelector('.reel-sound-toggle');
+        var playing=!video.paused&&!video.ended;
+        var audible=playing&&!video.muted&&video.volume>0;
+        card.classList.toggle('is-playing',playing);
+        card.classList.toggle('is-audible',audible);
+        card.classList.toggle('is-muted',video.muted||video.volume===0);
+        if(playBtn)playBtn.setAttribute('aria-label',playing?'Pause reel':'Play reel');
+        if(soundBtn)soundBtn.setAttribute('aria-label',(video.muted||video.volume===0)?'Enable sound':'Mute reel');
+      }
+      function pauseReel(video,resetMute){
+        if(!video)return;
+        try{video.pause();}catch(_e){}
+        if(resetMute){video.muted=true;video.defaultMuted=true;video.setAttribute('muted','');}
+        syncReelUi(video);
+      }
+      function pauseAllReels(except){
+        reelVideos.forEach(function(video){if(video!==except)pauseReel(video,true);});
+      }
+      function playReel(video,byUser){
+        if(!video||!reelCardVisible(video))return;
+        pauseAllReels(video);
+        video.loop=true;
+        video.playsInline=true;
+        video.setAttribute('playsinline','');
+        video.setAttribute('webkit-playsinline','');
+        video.preload=byUser?'auto':'metadata';
+        if(!byUser){
+          video.muted=true;
+          video.defaultMuted=true;
+          video.setAttribute('muted','');
+        }
+        var promise;
+        try{promise=video.play();}catch(_e){promise=null;}
+        if(promise&&promise.catch){
+          promise.catch(function(){
+            if(!byUser){
+              video.muted=true;
+              video.defaultMuted=true;
+              video.setAttribute('muted','');
+            }
+            syncReelUi(video);
+          });
+        }
+        syncReelUi(video);
+      }
+      function toggleManualReel(video){
+        if(!video)return;
+        manualReel=video;
+        manualReelGraceUntil=Date.now()+4000;
+        if(!video.paused&&!video.ended){pauseReel(video,false);return;}
+        playReel(video,true);
+      }
+      function toggleReelSound(video){
+        if(!video)return;
+        pauseAllReels(video);
+        manualReel=video;
+        manualReelGraceUntil=Date.now()+4000;
+        var willUnmute=video.muted||video.volume===0;
+        video.muted=!willUnmute;
+        video.defaultMuted=video.muted;
+        if(video.muted)video.setAttribute('muted','');else video.removeAttribute('muted');
+        if(video.paused||video.ended)playReel(video,true);
+        syncReelUi(video);
+      }
+      function requestVideoFullscreen(video){
+        if(!video)return;
+        pauseAllReels(video);
+        manualReel=video;
+        manualReelGraceUntil=Date.now()+4000;
+        fullscreenVideo=video;
+        video.preload='auto';
+        function enter(){
+          try{
+            if(isiOS&&typeof video.webkitEnterFullscreen==='function'){
+              video.webkitEnterFullscreen();
+              return;
+            }
+            if(typeof video.requestFullscreen==='function'){
+              var request=video.requestFullscreen();
+              if(request&&request.catch){
+                request.catch(function(){
+                  if(typeof video.webkitEnterFullscreen==='function'){
+                    try{video.webkitEnterFullscreen();}catch(_fallbackErr){fullscreenVideo=null;}
+                  }else fullscreenVideo=null;
+                });
+              }
+              return;
+            }
+            if(typeof video.webkitEnterFullscreen==='function')video.webkitEnterFullscreen();
+            else fullscreenVideo=null;
+          }catch(_e){fullscreenVideo=null;}
+        }
+        if(video.readyState>=1)enter();
+        else{
+          video.addEventListener('loadedmetadata',enter,{once:true});
+          try{video.load();}catch(_loadErr){}
+        }
+      }
+      function refreshVisibleReels(){
+        if(fullscreenVideo)return;
+        if(document.hidden){pauseAllReels();return;}
+        if(manualReel){
+          var manualRatio=reelRatios.get(manualReel)||0;
+          if(reelCardVisible(manualReel)&&(manualRatio>.12||Date.now()<manualReelGraceUntil))return;
+          pauseReel(manualReel,true);
+          manualReel=null;
+          manualReelGraceUntil=0;
+        }
+        var best=null,bestRatio=.58;
+        reelVideos.forEach(function(video){
+          if(!reelCardVisible(video))return;
+          var ratio=reelRatios.get(video)||0;
+          if(ratio>bestRatio){bestRatio=ratio;best=video;}
+        });
+        if(!best){pauseAllReels();return;}
+        if(conserveData){pauseAllReels();return;}
+        if(best.paused||best.ended)playReel(best,false);
+        else pauseAllReels(best);
+      }
       window.refreshVisibleReels=refreshVisibleReels;
-      reelVideos.forEach(function(video){var card=video.closest('.reel-card');if(!card)return;card.setAttribute('role','group');card.setAttribute('aria-label',video.getAttribute('aria-label')||'Portfolio reel');card.addEventListener('click',function(e){if(e.target.closest('button,.reel-controls'))return;e.preventDefault();toggleManualReel(video);});var playBtn=card.querySelector('.reel-play-toggle'),soundBtn=card.querySelector('.reel-sound-toggle'),fullBtn=card.querySelector('.reel-fullscreen-toggle');if(playBtn)playBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();toggleManualReel(video);});if(soundBtn)soundBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(video.paused){manualReel=video;playReel(video,true);}else if(video.muted){pauseAllReels(video);manualReel=video;video.muted=false;video.defaultMuted=false;video.removeAttribute('muted');syncReelUi(video);}else{video.muted=true;video.defaultMuted=true;video.setAttribute('muted','');syncReelUi(video);}});if(fullBtn)fullBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();requestVideoFullscreen(video);});video.addEventListener('play',function(){var card=video.closest('.reel-card');if(card)card.classList.add('has-started');syncReelUi(video);});video.addEventListener('playing',function(){var card=video.closest('.reel-card');if(card)card.classList.add('has-started');syncReelUi(video);});video.addEventListener('pause',function(){syncReelUi(video);});video.addEventListener('volumechange',function(){syncReelUi(video);});video.addEventListener('webkitbeginfullscreen',function(){fullscreenVideo=video;manualReel=video;pauseAllReels(video);});video.addEventListener('webkitendfullscreen',function(){fullscreenVideo=null;syncReelUi(video);requestAnimationFrame(updateCarouselControls);});syncReelUi(video);});
-      document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement)fullscreenVideo=null;requestAnimationFrame(updateCarouselControls);});document.addEventListener('webkitfullscreenchange',function(){if(!document.webkitFullscreenElement)fullscreenVideo=null;requestAnimationFrame(updateCarouselControls);});
-      if('IntersectionObserver' in window){var reelObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){reelRatios.set(entry.target,entry.isIntersecting?entry.intersectionRatio:0);});refreshVisibleReels();},{threshold:[0,.15,.35,.58,.75,.9],rootMargin:'0px'});reelVideos.forEach(function(video){reelObserver.observe(video);});}else{reelVideos.forEach(function(video){reelRatios.set(video,1);});}
+
+      reelVideos.forEach(function(video){
+        var card=video.closest('.reel-card');if(!card)return;
+        video.muted=true;
+        video.defaultMuted=true;
+        video.loop=true;
+        video.playsInline=true;
+        video.setAttribute('muted','');
+        video.setAttribute('playsinline','');
+        video.setAttribute('webkit-playsinline','');
+        video.preload='metadata';
+        video.addEventListener('loadedmetadata',function(){primeReelPreview(video);},{once:true});
+        if(video.readyState>=1)primeReelPreview(video);
+        card.setAttribute('role','group');
+        card.setAttribute('aria-label',video.getAttribute('aria-label')||'Portfolio reel');
+
+        var playBtn=card.querySelector('.reel-play-toggle');
+        var soundBtn=card.querySelector('.reel-sound-toggle');
+        var fullBtn=card.querySelector('.reel-fullscreen-toggle');
+
+        card.addEventListener('click',function(e){
+          if(e.target.closest('button,.reel-controls'))return;
+          e.preventDefault();
+          toggleManualReel(video);
+        });
+        if(playBtn)playBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();toggleManualReel(video);});
+        if(soundBtn)soundBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();toggleReelSound(video);});
+        if(fullBtn)fullBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();requestVideoFullscreen(video);});
+
+        video.addEventListener('play',function(){
+          pauseAllReels(video);
+          card.classList.add('has-started');
+          syncReelUi(video);
+        });
+        video.addEventListener('playing',function(){card.classList.add('has-started');syncReelUi(video);});
+        video.addEventListener('pause',function(){syncReelUi(video);});
+        video.addEventListener('ended',function(){syncReelUi(video);});
+        video.addEventListener('volumechange',function(){syncReelUi(video);});
+        video.addEventListener('webkitbeginfullscreen',function(){fullscreenVideo=video;manualReel=video;pauseAllReels(video);});
+        video.addEventListener('webkitendfullscreen',function(){fullscreenVideo=null;syncReelUi(video);requestAnimationFrame(updateCarouselControls);refreshVisibleReels();});
+        syncReelUi(video);
+      });
+
+      document.addEventListener('fullscreenchange',function(){
+        if(!document.fullscreenElement)fullscreenVideo=null;
+        requestAnimationFrame(updateCarouselControls);
+        if(!fullscreenVideo)refreshVisibleReels();
+      });
+      document.addEventListener('webkitfullscreenchange',function(){
+        if(!document.webkitFullscreenElement)fullscreenVideo=null;
+        requestAnimationFrame(updateCarouselControls);
+        if(!fullscreenVideo)refreshVisibleReels();
+      });
+
+      if('IntersectionObserver' in window){
+        var reelObserver=new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){reelRatios.set(entry.target,entry.isIntersecting?entry.intersectionRatio:0);});
+          refreshVisibleReels();
+        },{threshold:[0,.15,.35,.58,.75,.9],rootMargin:'0px'});
+        reelVideos.forEach(function(video){reelObserver.observe(video);});
+      }else{
+        reelVideos.forEach(function(video){reelRatios.set(video,1);});
+        refreshVisibleReels();
+      }
 
       // Asset resilience: preserve layout and report a local-file mistake without breaking the page.
       function markAssetError(el){var visual=el&&el.closest?el.closest('.visual'):null;if(visual)visual.classList.add('asset-load-error');}
@@ -2677,12 +2875,9 @@
 /* Final media rule: preserve the complete source frame while retaining approved card geometry. */
 #expertise .work-card .visual{aspect-ratio:4/5!important;background:#06131d!important;overflow:hidden!important}
 #expertise .reel-card .visual{aspect-ratio:9/16!important;background:#06131d!important;overflow:hidden!important}
-#expertise .visual .media-backdrop{position:absolute;inset:-7%;z-index:0;background-size:cover;background-position:center;filter:blur(12px) saturate(.82) brightness(.52);opacity:.52;transform:scale(1.06);pointer-events:none}
+#expertise .work-card .media-backdrop{position:absolute;inset:-7%;z-index:0;background-size:cover;background-position:center;filter:blur(12px) saturate(.82) brightness(.52);opacity:.52;transform:scale(1.06);pointer-events:none}
 #expertise .work-card picture{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%}
 #expertise .work-card .media-bg-img{position:absolute!important;inset:0!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;transform:none!important;background:transparent!important}
-#expertise .reel-card .media-video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:2!important;object-fit:contain!important;object-position:center center!important;background:#06131d!important;transform:translateZ(0)!important}
-#expertise .reel-card .visual::after{z-index:4!important}
-#expertise .reel-card .visual-label,#expertise .reel-card .visual-bottom,#expertise .reel-card .reel-controls{z-index:6!important}
 #expertise .visual::after{z-index:2!important;pointer-events:none!important}
 #expertise .visual-label,#expertise .visual-bottom,#expertise .reel-controls{z-index:4!important}
 #expertise .asset-load-error{background:#06131d!important}
@@ -2706,7 +2901,7 @@
   .digital-growth{padding:72px 0 78px}.digital-growth-head{grid-template-columns:1fr;gap:20px;margin-bottom:28px}.digital-growth .growth-intro{justify-self:start;font-size:13px;max-width:34em}.digital-growth-grid{grid-template-columns:1fr;gap:16px}.growth-card{min-height:410px;padding:26px 22px}.growth-card-mid{grid-template-columns:1fr;gap:22px;padding:44px 0 34px}.growth-card h3{font-size:clamp(48px,14vw,72px)}.growth-card p{max-width:32em}.growth-services span{min-height:50px;font-size:8px}
 }
 @media(max-width:480px){
-  #expertise .visual .media-backdrop{filter:blur(9px) saturate(.8) brightness(.5);opacity:.48}
+  #expertise .work-card .media-backdrop{filter:blur(9px) saturate(.8) brightness(.5);opacity:.48}
   .digital-growth{padding:64px 0 70px}.growth-card{padding:22px 18px;min-height:390px}.growth-card-top{font-size:8px}.growth-card-mid{padding:38px 0 30px}.growth-card h3{font-size:clamp(45px,13.5vw,62px)}.growth-services span:nth-child(odd){padding-right:10px}.growth-services span:nth-child(even){padding-left:10px}
 }
 </style>
