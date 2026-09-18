@@ -2327,11 +2327,12 @@
 <section class="contact" id="contact">
 <div class="shell contact-grid">
 <div class="reveal"><div class="eyebrow">Start something worth remembering</div><h2 class="display">Create.<br><span class="outline">Position.</span><br>Grow.</h2></div>
-<div class="contact-row reveal"><p class="contact-copy">Have a brand, campaign or production in mind? Bring us the ambition. We’ll build the creative system around it.</p><div><a class="big-link" href="mailto:hello@ishproductions01.com"><span>hello@ishproductions01.com</span></a><a class="big-link" href="https://www.instagram.com/ish.productions01/" rel="noopener noreferrer" target="_blank"><span>Instagram</span></a></div></div>
+<div class="contact-row reveal"><p class="contact-copy">Have a brand, campaign or production in mind? Bring us the ambition. We’ll build the creative system around it.</p><div class="contact-links"><a class="big-link" href="tel:+917995001505"><span><small class="contact-link-label">Phone</small>+91 79950 01505</span></a><a class="big-link" href="https://wa.me/917416621616" rel="noopener noreferrer" target="_blank"><span><small class="contact-link-label">WhatsApp</small>+91 74166 21616</span></a><a class="big-link" href="mailto:Ish.productions01@gmail.com"><span><small class="contact-link-label">Email</small>Ish.productions01@gmail.com</span></a><a class="big-link" href="https://www.instagram.com/ish.productions01?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" rel="noopener noreferrer" target="_blank"><span><small class="contact-link-label">Instagram</small>@ish.productions01</span></a></div></div>
 <footer class="footer"><span>© <span id="year"></span> ISH Productions</span><div class="footer-links"><a href="#top">Back to top</a><a href="#expertise">Selected work</a><a href="#about">About</a></div></footer>
 </div>
 </section>
 </main>
+<a class="sticky-contact-cta" href="#contact" aria-label="Contact ISH Productions"><span>Contact</span></a>
 <style id="approved-work-layout-restore">
 /* =============================================================
    APPROVED WORK LAYOUT RESTORE
@@ -2990,6 +2991,65 @@
 @media(max-width:480px){
   #expertise .work-card .media-backdrop{filter:blur(9px) saturate(.8) brightness(.5);opacity:.48}
   .digital-growth{padding:64px 0 70px}.growth-card{padding:22px 18px;min-height:390px}.growth-card-top{font-size:8px}.growth-card-mid{padding:38px 0 30px}.growth-card h3{font-size:clamp(45px,13.5vw,62px)}.growth-services span:nth-child(odd){padding-right:10px}.growth-services span:nth-child(even){padding-left:10px}
+}
+</style>
+
+<style id="contact-and-mobile-scroll-fix">
+/* Contact details + persistent CTA */
+.contact-links{display:grid;gap:0;min-width:0}
+.contact-links .big-link{max-width:100%!important;min-width:0}
+.contact-links .big-link span{display:flex;flex-direction:column;gap:5px;min-width:0;overflow-wrap:anywhere}
+.contact-link-label{display:block;font-size:8px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:rgba(230,239,242,.48);font-weight:600}
+.contact-links .big-link:hover .contact-link-label{color:rgba(191,225,223,.72)}
+.sticky-contact-cta{
+  position:fixed;
+  right:max(18px,env(safe-area-inset-right));
+  bottom:max(18px,env(safe-area-inset-bottom));
+  z-index:9000;
+  min-width:112px;
+  height:48px;
+  padding:0 20px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(4,18,27,.88);
+  color:#eef3f2;
+  border:1px solid rgba(89,182,159,.52);
+  box-shadow:0 12px 34px rgba(0,0,0,.34);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  transform:translateZ(0);
+  transition:transform .25s ease,background .25s ease,border-color .25s ease;
+}
+.sticky-contact-cta::before{content:"";width:7px;height:7px;border-radius:50%;margin-right:9px;background:#59b69f;box-shadow:0 0 0 4px rgba(89,182,159,.10)}
+.sticky-contact-cta:hover,.sticky-contact-cta:focus-visible{background:rgba(8,36,46,.96);border-color:rgba(89,182,159,.9);transform:translateY(-2px)}
+
+/* Mobile scroll repair: horizontal rails must not trap vertical page gestures. */
+@media(max-width:900px),((hover:none) and (pointer:coarse)){
+  #expertise .expertise-filters,
+  #expertise .filtered-work .carousel{
+    touch-action:pan-x pan-y!important;
+    overscroll-behavior-x:auto!important;
+    overscroll-behavior-inline:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  #expertise .filtered-work .carousel{
+    scroll-snap-type:x proximity!important;
+    scroll-behavior:auto!important;
+  }
+  .sticky-contact-cta{
+    right:max(12px,env(safe-area-inset-right));
+    bottom:max(12px,env(safe-area-inset-bottom));
+    min-width:104px;
+    height:46px;
+    padding:0 17px;
+    font-size:10px;
+  }
 }
 </style>
 </body>
