@@ -1390,6 +1390,84 @@
 }
 </style>
 
+
+<style id="recognition-and-active-reel-controls">
+/* ==========================================================
+   RECOGNITION — isolated editorial proof section.
+   Existing site geometry/interactions remain unchanged.
+   ========================================================== */
+.recognition{
+  position:relative;
+  padding:clamp(94px,9vw,138px) 0;
+  overflow:hidden;
+  background:
+    radial-gradient(42% 36% at 88% 10%,rgba(87,147,204,.08),transparent 74%),
+    radial-gradient(34% 32% at 8% 90%,rgba(89,182,159,.07),transparent 76%),
+    #03080e;
+  color:#eef2f1;
+  border-top:1px solid rgba(206,224,234,.11);
+  border-bottom:1px solid rgba(206,224,234,.10);
+}
+.recognition__inner{position:relative;z-index:1;min-width:0}
+.recognition__head{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(280px,.52fr);gap:clamp(34px,5vw,84px);align-items:end;margin-bottom:clamp(40px,5vw,70px)}
+.recognition__eyebrow{color:var(--brand-teal)}
+.recognition__title{margin:14px 0 0;max-width:8.4ch;font-size:clamp(62px,8.3vw,126px);line-height:.84;letter-spacing:-.035em}
+.recognition__copy{margin:0;max-width:38ch;justify-self:end;color:#8ea1aa;font-size:13px;line-height:1.65}
+.recognition__rail{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,1.06fr) minmax(220px,.74fr);gap:clamp(22px,3vw,50px);align-items:start;min-width:0}
+.recognition__item{margin:0;min-width:0}
+.recognition__item--two{margin-top:clamp(46px,5vw,82px)}
+.recognition__item--three{margin-top:clamp(10px,1.5vw,24px)}
+.recognition__media{display:grid;place-items:center;width:100%;min-width:0;overflow:hidden;border:1px solid rgba(206,224,234,.13);border-radius:16px;background:#010305;box-shadow:0 24px 70px rgba(0,0,0,.24)}
+.recognition__media img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;object-position:center;background:#010305}
+.recognition__caption{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-top:12px;padding-top:11px;border-top:1px solid rgba(206,224,234,.11)}
+.recognition__caption strong{font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;font-size:10px;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:#e3e9e9}
+.recognition__caption span{max-width:20ch;text-align:right;font-size:7px;line-height:1.45;letter-spacing:.11em;text-transform:uppercase;color:#617985}
+
+/* Only the leading/active reel exposes controls. This removes duplicated
+   button rows and prevents long reel names from colliding with controls. */
+#expertise .reel-card .reel-controls{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translateY(5px);
+  transition:opacity .2s ease,transform .2s ease,visibility 0s linear .2s!important;
+}
+#expertise .reel-card.is-active-reel .reel-controls,
+#expertise .reel-card:focus-within .reel-controls{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:none;
+  transition-delay:0s!important;
+}
+
+@media(max-width:900px){
+  .recognition{padding:78px 0 86px}
+  .recognition__head{grid-template-columns:minmax(0,1fr);gap:19px;margin-bottom:34px}
+  .recognition__title{max-width:8.2ch;font-size:clamp(54px,14.5vw,74px);line-height:.86}
+  .recognition__copy{justify-self:start;max-width:34ch;font-size:12.5px;line-height:1.6}
+  .recognition__rail{display:flex;gap:14px;width:auto;max-width:100vw;margin-left:calc(var(--pad) * -1);margin-right:calc(var(--pad) * -1);padding-left:var(--pad);padding-right:var(--pad);overflow-x:auto;overflow-y:visible;scroll-snap-type:x proximity;scroll-padding-left:var(--pad);touch-action:pan-x pan-y;overscroll-behavior-inline:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .recognition__rail::-webkit-scrollbar{display:none}
+  .recognition__item{flex:0 0 min(82vw,390px);margin-top:0!important;scroll-snap-align:start}
+  .recognition__item--three{flex-basis:min(68vw,320px)}
+  .recognition__media{border-radius:14px}
+  .recognition__caption{margin-top:10px;padding-top:10px;gap:12px}
+  .recognition__caption strong{font-size:9px}
+  .recognition__caption span{font-size:6.5px}
+
+  /* On narrow reel cards, keep the active controls on their own row above
+     the title rather than shrinking the approved title typography. */
+  #expertise .reel-card.is-active-reel .reel-controls,
+  #expertise .reel-card:focus-within .reel-controls{right:9px!important;bottom:62px!important}
+}
+
+@media(max-width:380px){
+  .recognition__title{font-size:clamp(50px,14vw,60px)}
+  .recognition__item{flex-basis:min(84vw,330px)}
+  .recognition__item--three{flex-basis:min(72vw,280px)}
+}
+</style>
+
 </head>
 <body>
 <style id="phase5-performance">
@@ -2194,6 +2272,16 @@
 </div><div class="visual-bottom"><strong>Fashion</strong></div>
 </div>
 </article>
+<article class="reel-card video-source-landscape" data-category="Fashion" data-group="brands" data-sector-card="brands" data-subcategory="fashion">
+<div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
+<video aria-label="Fashion portfolio reel" class="media-video" src="assets/videos/23.mp4" muted loop playsinline webkit-playsinline preload="auto"></video>
+<span class="visual-label">Fashion</span><div aria-label="Video controls" class="reel-controls">
+<button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
+<button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
+<button aria-label="Enter fullscreen" class="reel-control reel-fullscreen-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M8.5 5H5v3.5M15.5 5H19v3.5M19 15.5V19h-3.5M8.5 19H5v-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button>
+</div><div class="visual-bottom"><strong>Fashion</strong></div>
+</div>
+</article>
 <article class="reel-card video-source-landscape" data-category="Automotive" data-group="brands" data-sector-card="brands" data-subcategory="automotive">
 <div class="visual has-media" data-source-aspect="landscape" data-source-height="1078" data-source-width="1920">
 <video aria-label="Automotive portfolio reel" class="media-video" src="assets/videos/25.mp4" muted loop playsinline webkit-playsinline preload="auto"></video>
@@ -2234,24 +2322,15 @@
 </div><div class="visual-bottom"><strong>Travel</strong></div>
 </div>
 </article>
-<article class="reel-card video-source-landscape" data-category="Travel" data-group="brands" data-sector-card="brands" data-subcategory="travel">
-<div class="visual has-media" data-source-aspect="landscape" data-source-height="1080" data-source-width="1920">
-<video aria-label="Travel portfolio reel" class="media-video" src="assets/videos/23.mp4" muted loop playsinline webkit-playsinline preload="auto"></video>
-<span class="visual-label">Travel</span><div aria-label="Video controls" class="reel-controls">
-<button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
-<button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
-<button aria-label="Enter fullscreen" class="reel-control reel-fullscreen-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M8.5 5H5v3.5M15.5 5H19v3.5M19 15.5V19h-3.5M8.5 19H5v-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button>
-</div><div class="visual-bottom"><strong>Travel</strong></div>
-</div>
-</article>
-<article class="reel-card video-source-square" data-category="Travel" data-group="brands" data-sector-card="brands" data-subcategory="travel">
+
+<article class="reel-card video-source-square" data-category="Celebrity Work" data-group="brands" data-sector-card="brands" data-subcategory="celebrity-work">
 <div class="visual has-media" data-source-aspect="square" data-source-height="1080" data-source-width="1080">
-<video aria-label="Travel portfolio reel" class="media-video" src="assets/videos/28.mp4" muted loop playsinline webkit-playsinline preload="auto"></video>
-<span class="visual-label">Travel</span><div aria-label="Video controls" class="reel-controls">
+<video aria-label="Celebrity Work portfolio reel" class="media-video" src="assets/videos/28.mp4" muted loop playsinline webkit-playsinline preload="auto"></video>
+<span class="visual-label">Celebrity Work</span><div aria-label="Video controls" class="reel-controls">
 <button aria-label="Play reel" class="reel-control reel-play-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path class="play-glyph" d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"></path><g class="pause-glyph"><rect fill="currentColor" height="10" rx="1" width="3" x="8" y="7"></rect><rect fill="currentColor" height="10" rx="1" width="3" x="13" y="7"></rect></g></svg></button>
 <button aria-label="Enable sound" class="reel-control reel-audio-btn reel-sound-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 10v4h3l4 3V7L8 10H5Z" fill="currentColor"></path><path class="sound-waves" d="M15 9.2c1.7 1.6 1.7 4 0 5.6M17.5 7c3 2.8 3 7.2 0 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path><path class="mute-x" d="m15.2 9.2 4 5.6m0-5.6-4 5.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></button>
 <button aria-label="Enter fullscreen" class="reel-control reel-fullscreen-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M8.5 5H5v3.5M15.5 5H19v3.5M19 15.5V19h-3.5M8.5 19H5v-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button>
-</div><div class="visual-bottom"><strong>Travel</strong></div>
+</div><div class="visual-bottom"><strong>Celebrity Work</strong></div>
 </div>
 </article>
 <article class="reel-card video-source-square" data-category="Travel" data-group="brands" data-sector-card="brands" data-subcategory="travel">
@@ -2295,7 +2374,33 @@
 </div>
 </article>
 </div>
-<div class="filter-status shell"><span data-status="spaces">Real Estate · Architecture · Interiors · Furniture</span><span data-status="hospitality">Hotels &amp; Resorts · Restaurants &amp; Cafés · Events</span><span data-status="brands">Fashion · Automotive · Travel · Entertainment · Corporate</span></div>
+<div class="filter-status shell"><span data-status="spaces">Real Estate · Architecture · Interiors · Furniture</span><span data-status="hospitality">Hotels &amp; Resorts · Restaurants &amp; Cafés · Events</span><span data-status="brands">Fashion · Automotive · Travel · Celebrity Work · Entertainment · Corporate</span></div>
+</div>
+</div>
+</section>
+
+<section class="recognition" id="recognition" aria-labelledby="recognition-title">
+<div class="shell recognition__inner">
+<div class="recognition__head reveal">
+<div>
+<div class="eyebrow recognition__eyebrow">Recognition · Social proof</div>
+<h2 class="display recognition__title" id="recognition-title">Work That<br/>Got Noticed.</h2>
+</div>
+<p class="recognition__copy">A few moments where the work was noticed, liked or acknowledged by established brands.</p>
+</div>
+<div class="recognition__rail" aria-label="Brand recognition screenshots">
+<figure class="recognition__item recognition__item--one reveal">
+<div class="recognition__media"><img src="assets/images/recognition-oneplus-01.jpeg" alt="Screenshot showing OnePlus engaging with a social media post by the creator" loading="lazy" decoding="async"/></div>
+<figcaption class="recognition__caption"><strong>OnePlus</strong><span>Brand recognition · Social media</span></figcaption>
+</figure>
+<figure class="recognition__item recognition__item--two reveal">
+<div class="recognition__media"><img src="assets/images/recognition-oneplus-02.jpeg" alt="Screenshot showing OnePlus liking a social media post by the creator" loading="lazy" decoding="async"/></div>
+<figcaption class="recognition__caption"><strong>OnePlus</strong><span>Brand recognition · Social media</span></figcaption>
+</figure>
+<figure class="recognition__item recognition__item--three reveal">
+<div class="recognition__media"><img src="assets/images/recognition-snickers-01.jpeg" alt="Screenshot showing a Snickers UK response to the creator's photography" loading="lazy" decoding="async"/></div>
+<figcaption class="recognition__caption"><strong>Snickers UK</strong><span>Brand response · Social media</span></figcaption>
+</figure>
 </div>
 </div>
 </section>
@@ -2603,6 +2708,12 @@
       // Cards are queried from the CURRENT DOM on every action so dynamic media never leaves stale NodeLists.
       var carouselControllers={};
       var interactiveDragSelector='button, video, a, input, label, .reel-sound-toggle, .reel-fullscreen-toggle, .reel-play-toggle, .carousel-nav';
+      function setActiveReelCard(card){
+        document.querySelectorAll('#reel-filter-carousel .reel-card.is-active-reel').forEach(function(item){
+          if(item!==card)item.classList.remove('is-active-reel');
+        });
+        if(card&&!card.hidden&&!card.classList.contains('is-filter-hidden'))card.classList.add('is-active-reel');
+      }
       function createCarouselController(options){
         var track=document.getElementById(options.trackId);if(!track)return null;
         var groups=['spaces','hospitality','brands'];
@@ -2615,7 +2726,7 @@
         function paddingLeft(){var n=parseFloat(getComputedStyle(track).paddingLeft);return isNaN(n)?0:n;}
         function nearestLeadingIndex(cards){if(!cards.length)return 0;var target=track.scrollLeft+paddingLeft(),best=0,bestDist=Infinity;cards.forEach(function(card,i){var d=Math.abs(card.offsetLeft-target);if(d<bestDist){bestDist=d;best=i;}});return best;}
         function scrollCardIntoStart(card,behavior){if(!card)return;var left=Math.max(0,card.offsetLeft-paddingLeft());try{track.scrollTo({left:left,behavior:behavior||'smooth'});}catch(_e){track.scrollLeft=left;}}
-        function updateButtons(){var cards=visibleCards(),max=Math.max(0,track.scrollWidth-track.clientWidth);if(!cards.length||max<=4){if(prev)prev.disabled=true;if(next)next.disabled=true;return;}var index=nearestLeadingIndex(cards);if(prev)prev.disabled=track.scrollLeft<=3||index<=0;if(next)next.disabled=track.scrollLeft>=max-3||index>=cards.length-1;}
+        function updateButtons(){var cards=visibleCards(),max=Math.max(0,track.scrollWidth-track.clientWidth),index=cards.length?nearestLeadingIndex(cards):0;if(options.trackId==='reel-filter-carousel')setActiveReelCard(cards.length?cards[index]:null);if(!cards.length||max<=4){if(prev)prev.disabled=true;if(next)next.disabled=true;return;}if(prev)prev.disabled=track.scrollLeft<=3||index<=0;if(next)next.disabled=track.scrollLeft>=max-3||index>=cards.length-1;}
         function updateStatus(group){var block=track.closest('.work-block');if(!block)return;block.querySelectorAll('.filter-status [data-status]').forEach(function(el){el.style.display=el.getAttribute('data-status')===group?'inline':'none';});}
         function applyFilter(group,resetScroll){if(groups.indexOf(group)<0)group=groups[0];currentGroup=group;filters.forEach(function(btn){var active=btn.getAttribute('data-sector')===group;btn.classList.toggle('is-active',active);btn.setAttribute('aria-pressed',String(active));});allCards().forEach(function(card){var hidden=card.getAttribute('data-group')!==group;card.hidden=hidden;card.classList.toggle('is-filter-hidden',hidden);card.setAttribute('aria-hidden',String(hidden));if(hidden){var video=card.querySelector('video');if(video){try{video.pause();}catch(_e){}}}});updateStatus(group);ensureVisibleMedia();if(resetScroll){try{track.scrollTo({left:0,behavior:'auto'});}catch(_e){track.scrollLeft=0;}}requestAnimationFrame(function(){var cards=visibleCards();if(cards.length&&resetScroll)scrollCardIntoStart(cards[0],'auto');updateButtons();if(window.refreshVisibleReels)window.refreshVisibleReels();});}
         function navigate(dir){var cards=visibleCards();if(!cards.length)return;var max=Math.max(0,track.scrollWidth-track.clientWidth);if(max<=4){updateButtons();return;}var index=nearestLeadingIndex(cards),target=index+dir;if(target<0||target>=cards.length){updateButtons();return;}scrollCardIntoStart(cards[target],'smooth');setTimeout(updateButtons,360);}
@@ -2887,11 +2998,12 @@
         card.addEventListener('click',function(e){
           if(e.target.closest('button,.reel-controls'))return;
           e.preventDefault();
+          setActiveReelCard(card);
           toggleManualReel(video);
         });
-        if(playBtn)playBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();toggleManualReel(video);});
-        if(soundBtn)soundBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();toggleReelSound(video);});
-        if(fullBtn)fullBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();requestVideoFullscreen(video);});
+        if(playBtn)playBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();setActiveReelCard(card);toggleManualReel(video);});
+        if(soundBtn)soundBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();setActiveReelCard(card);toggleReelSound(video);});
+        if(fullBtn)fullBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();setActiveReelCard(card);requestVideoFullscreen(video);});
 
         video.addEventListener('loadeddata',function(){primeReelPreview(video);},{once:true});
         video.addEventListener('canplay',function(){primeReelPreview(video);},{once:true});
