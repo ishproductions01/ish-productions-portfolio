@@ -1440,6 +1440,8 @@
   transform:none;
   transition-delay:0s!important;
 }
+/* Desktop hover is handled in JavaScript by moving the single active state to
+   the hovered reel. This guarantees one control set at a time. */
 
 @media(max-width:900px){
   .recognition{padding:78px 0 86px}
@@ -1455,10 +1457,16 @@
   .recognition__caption strong{font-size:9px}
   .recognition__caption span{font-size:6.5px}
 
-  /* On narrow reel cards, keep the active controls on their own row above
-     the title rather than shrinking the approved title typography. */
+  /* On narrow reel cards, keep the active controls in a compact row just
+     above the title. This protects long labels without shrinking them. */
   #expertise .reel-card.is-active-reel .reel-controls,
-  #expertise .reel-card:focus-within .reel-controls{right:9px!important;bottom:62px!important}
+  #expertise .reel-card:focus-within .reel-controls{right:10px!important;bottom:54px!important;gap:5px!important}
+  #expertise .reel-card.is-active-reel .reel-control,
+  #expertise .reel-card:focus-within .reel-control,
+  #expertise .reel-card.is-active-reel .reel-audio-btn,
+  #expertise .reel-card:focus-within .reel-audio-btn{width:38px!important;height:38px!important;min-width:38px!important}
+  #expertise .reel-card.is-active-reel .reel-control svg,
+  #expertise .reel-card:focus-within .reel-control svg{width:16px!important;height:16px!important}
 }
 
 @media(max-width:380px){
@@ -2707,6 +2715,7 @@
       // Unified filter + native-scroll carousel controller.
       // Cards are queried from the CURRENT DOM on every action so dynamic media never leaves stale NodeLists.
       var carouselControllers={};
+      var hoveredReelCard=null;
       var interactiveDragSelector='button, video, a, input, label, .reel-sound-toggle, .reel-fullscreen-toggle, .reel-play-toggle, .carousel-nav';
       function setActiveReelCard(card){
         document.querySelectorAll('#reel-filter-carousel .reel-card.is-active-reel').forEach(function(item){
@@ -2725,8 +2734,19 @@
         function ensureVisibleMedia(){visibleCards().forEach(function(card,i){var img=card.querySelector('.media-bg-img');if(img&&i<4){img.loading='eager';var src=img.getAttribute('src');if(src&&!img.complete){img.setAttribute('src',src);}}});}
         function paddingLeft(){var n=parseFloat(getComputedStyle(track).paddingLeft);return isNaN(n)?0:n;}
         function nearestLeadingIndex(cards){if(!cards.length)return 0;var target=track.scrollLeft+paddingLeft(),best=0,bestDist=Infinity;cards.forEach(function(card,i){var d=Math.abs(card.offsetLeft-target);if(d<bestDist){bestDist=d;best=i;}});return best;}
+        function mostVisibleIndex(cards){
+          if(!cards.length)return 0;
+          var tr=track.getBoundingClientRect(),best=0,bestArea=-1,bestCenter=Infinity;
+          cards.forEach(function(card,i){
+            var r=card.getBoundingClientRect();
+            var overlap=Math.max(0,Math.min(r.right,tr.right)-Math.max(r.left,tr.left));
+            var centerDist=Math.abs(((r.left+r.right)/2)-((tr.left+tr.right)/2));
+            if(overlap>bestArea+1||(Math.abs(overlap-bestArea)<=1&&centerDist<bestCenter)){bestArea=overlap;bestCenter=centerDist;best=i;}
+          });
+          return best;
+        }
         function scrollCardIntoStart(card,behavior){if(!card)return;var left=Math.max(0,card.offsetLeft-paddingLeft());try{track.scrollTo({left:left,behavior:behavior||'smooth'});}catch(_e){track.scrollLeft=left;}}
-        function updateButtons(){var cards=visibleCards(),max=Math.max(0,track.scrollWidth-track.clientWidth),index=cards.length?nearestLeadingIndex(cards):0;if(options.trackId==='reel-filter-carousel')setActiveReelCard(cards.length?cards[index]:null);if(!cards.length||max<=4){if(prev)prev.disabled=true;if(next)next.disabled=true;return;}if(prev)prev.disabled=track.scrollLeft<=3||index<=0;if(next)next.disabled=track.scrollLeft>=max-3||index>=cards.length-1;}
+        function updateButtons(){var cards=visibleCards(),max=Math.max(0,track.scrollWidth-track.clientWidth),index=cards.length?nearestLeadingIndex(cards):0;if(options.trackId==='reel-filter-carousel'){var hoverIsUs=hoveredReelCard&&cards.indexOf(hoveredReelCard)!==-1;var activeIndex=cards.length?nearestLeadingIndex(cards):0;setActiveReelCard(hoverIsUs?hoveredReelCard:(cards.length?cards[activeIndex]:null));}if(!cards.length||max<=4){if(prev)prev.disabled=true;if(next)next.disabled=true;return;}if(prev)prev.disabled=track.scrollLeft<=3||index<=0;if(next)next.disabled=track.scrollLeft>=max-3||index>=cards.length-1;}
         function updateStatus(group){var block=track.closest('.work-block');if(!block)return;block.querySelectorAll('.filter-status [data-status]').forEach(function(el){el.style.display=el.getAttribute('data-status')===group?'inline':'none';});}
         function applyFilter(group,resetScroll){if(groups.indexOf(group)<0)group=groups[0];currentGroup=group;filters.forEach(function(btn){var active=btn.getAttribute('data-sector')===group;btn.classList.toggle('is-active',active);btn.setAttribute('aria-pressed',String(active));});allCards().forEach(function(card){var hidden=card.getAttribute('data-group')!==group;card.hidden=hidden;card.classList.toggle('is-filter-hidden',hidden);card.setAttribute('aria-hidden',String(hidden));if(hidden){var video=card.querySelector('video');if(video){try{video.pause();}catch(_e){}}}});updateStatus(group);ensureVisibleMedia();if(resetScroll){try{track.scrollTo({left:0,behavior:'auto'});}catch(_e){track.scrollLeft=0;}}requestAnimationFrame(function(){var cards=visibleCards();if(cards.length&&resetScroll)scrollCardIntoStart(cards[0],'auto');updateButtons();if(window.refreshVisibleReels)window.refreshVisibleReels();});}
         function navigate(dir){var cards=visibleCards();if(!cards.length)return;var max=Math.max(0,track.scrollWidth-track.clientWidth);if(max<=4){updateButtons();return;}var index=nearestLeadingIndex(cards),target=index+dir;if(target<0||target>=cards.length){updateButtons();return;}scrollCardIntoStart(cards[target],'smooth');setTimeout(updateButtons,360);}
@@ -2994,6 +3014,23 @@
         var playBtn=card.querySelector('.reel-play-toggle');
         var soundBtn=card.querySelector('.reel-sound-toggle');
         var fullBtn=card.querySelector('.reel-fullscreen-toggle');
+
+        /* Desktop pointer state: hovering a reel makes that exact reel the single
+           active control target. On leave, control state returns to the leading
+           visible reel. Touch/iPhone behavior is unchanged. */
+        card.addEventListener('mouseenter',function(){
+          if(window.matchMedia&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+            hoveredReelCard=card;
+            setActiveReelCard(card);
+          }
+        });
+        card.addEventListener('mouseleave',function(){
+          if(hoveredReelCard===card){
+            hoveredReelCard=null;
+            requestAnimationFrame(updateCarouselControls);
+          }
+        });
+        card.addEventListener('focusin',function(){setActiveReelCard(card);});
 
         card.addEventListener('click',function(e){
           if(e.target.closest('button,.reel-controls'))return;
